@@ -31,5 +31,5 @@ std::string AppPlatform_android$_getAppDataOptionsLocation(AppPlatform_android* 
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
  MSHookFunction((void*)&AppPlatform_android::_getAppDataOptionsLocation,(void*)&AppPlatform_android$_getAppDataOptionsLocation,(void**)&_AppPlatform_android$_getAppDataOptionsLocation);
-	return JNI_VERSION_1_2;
+ return JNI_VERSION_1_2;
 }
