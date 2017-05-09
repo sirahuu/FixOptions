@@ -21,14 +21,15 @@ class AppPlatform_android{
  std::string& getSettingsPath();
  std::string& getUserdataPath();
 };
+
 std::string (*_AppPlatform_android$_getAppDataOptionsLocation)(AppPlatform_android*);
 std::string AppPlatform_android$_getAppDataOptionsLocation(AppPlatform_android* app){
-std::string path=_AppPlatform_android$_getAppDataOptionsLocation(app);
-LOG("%s",(app->getUserdataPath()+AppPlatform::SETTINGS_PATH).c_str());
-return app->getUserdataPath()+AppPlatform::SETTINGS_PATH;
+ std::string path=_AppPlatform_android$_getAppDataOptionsLocation(app);
+//LOG("%s",(app->getUserdataPath()+AppPlatform::SETTINGS_PATH).c_str());
+ return app->getUserdataPath()+AppPlatform::SETTINGS_PATH;
 };
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
-	MSHookFunction((void*)&AppPlatform_android::_getAppDataOptionsLocation,(void*)&AppPlatform_android$_getAppDataOptionsLocation,(void**)&_AppPlatform_android$_getAppDataOptionsLocation);
+ MSHookFunction((void*)&AppPlatform_android::_getAppDataOptionsLocation,(void*)&AppPlatform_android$_getAppDataOptionsLocation,(void**)&_AppPlatform_android$_getAppDataOptionsLocation);
 	return JNI_VERSION_1_2;
 }
